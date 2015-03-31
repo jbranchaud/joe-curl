@@ -8,6 +8,11 @@
 
 (ns euler.problem-001)
 
+(defn multiple-of?
+  "Is x a multiple of y?"
+  [x y]
+  (= 0 (mod x y)))
+
 (defn problem-001
   "Sum multiples of 3 and 5"
   [input]
@@ -16,6 +21,6 @@
            curr input]
       (if (< curr 3)
         candidates
-        (if (or (= 0 (mod curr 3)) (= 0 (mod curr 5)))
+        (if (or (multiple-of? curr 3) (multiple-of? curr 5))
           (recur (conj candidates curr) (dec curr))
           (recur candidates (dec curr)))))))
