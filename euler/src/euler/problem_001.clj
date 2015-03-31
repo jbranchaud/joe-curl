@@ -13,6 +13,17 @@
   [x y]
   (= 0 (mod x y)))
 
+(defn multiple-checker
+  "Create a multiple checker"
+  [x]
+  #(= 0 (mod % x)))
+
+(def multiple-of-3?
+  (multiple-checker 3))
+
+(def multiple-of-5?
+  (multiple-checker 5))
+
 (defn problem-001
   "Sum multiples of 3 and 5"
   [input]
@@ -21,6 +32,6 @@
            curr input]
       (if (< curr 3)
         candidates
-        (if (or (multiple-of? curr 3) (multiple-of? curr 5))
+        (if (or (multiple-of-3? curr) (multiple-of-5? curr))
           (recur (conj candidates curr) (dec curr))
           (recur candidates (dec curr)))))))
