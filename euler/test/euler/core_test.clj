@@ -1,7 +1,8 @@
 (ns euler.core-test
   (:require [clojure.test :refer :all]
             [euler.core :refer :all]
-            [euler.problem-001 :refer :all]))
+            [euler.problem-001 :refer :all]
+            [euler.problem-002 :refer :all]))
 
 (deftest problem-001-test
   (testing "Sum multiples of 3 and 5"
@@ -10,3 +11,13 @@
     (is (= 0  (problem-001 2)))
     (is (= 3  (problem-001 3)))
     (is (= 8  (problem-001 5)))))
+
+(println (problem-001 999))
+
+(deftest problem-002-test
+  (testing "Sum even fibonacci numbers"
+    (is (= 44 (problem-002 90)))
+    (is (= 44 (problem-002 89)))
+    (is (= 10 (problem-002 20)))))
+
+(println (problem-002 4000000))
