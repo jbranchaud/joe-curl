@@ -2,7 +2,8 @@
   (:require [clojure.test :refer :all]
             [euler.core :refer :all]
             [euler.problem-001 :refer :all]
-            [euler.problem-002 :refer :all]))
+            [euler.problem-002 :refer :all]
+            [euler.problem-003 :refer :all]))
 
 (deftest problem-001-test
   (testing "Sum multiples of 3 and 5"
@@ -21,3 +22,9 @@
     (is (= 10 (problem-002 20)))))
 
 (println (problem-002 4000000))
+
+(deftest problem-003-test
+  (testing "Find largest prime factor"
+    (is (= 29 (problem-003 13195)))))
+
+(println (problem-003 600851475143))
