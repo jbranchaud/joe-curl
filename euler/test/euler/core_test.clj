@@ -3,7 +3,8 @@
             [euler.core :refer :all]
             [euler.problem-001 :refer :all]
             [euler.problem-002 :refer :all]
-            [euler.problem-003 :refer :all]))
+            [euler.problem-003 :refer :all]
+            [euler.problem-004 :refer :all]))
 
 (deftest problem-001-test
   (testing "Sum multiples of 3 and 5"
@@ -28,3 +29,9 @@
     (is (= 29 (problem-003 13195)))))
 
 (println (problem-003 600851475143))
+
+(deftest problem-004-test
+  (testing "Largest 3-digit product palindrome"
+    (is true)))
+
+(println (problem-004))
