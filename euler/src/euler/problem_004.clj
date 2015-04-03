@@ -11,17 +11,39 @@
 (defn is-palindrome?
   "Is the given string a palindrome?"
   [input]
-  (= input (clojure.string/reverse input)))
+  (let [input (str input)]
+    (= input (clojure.string/reverse input))))
 
-(defn problem-003
+; this solution terminates on a palindrome that isn't quite the largest
+(defn problem-004-old
   "Largest palindrome from product of 3 digit numbers"
-  []
-  (loop [first true
-         x 999
-         y 999]
+  [int1 int2]
+  (loop [x int1
+         y int2]
     (let [curr (* x y)]
       (if (is-palindrome? (str curr))
         curr
-        (if first
-          (recur (not first) (dec x) y)
-          (recur (not first) x (dec y)))))))
+        (if (= x y)
+          (recur (dec x) int2)
+          (recur x (dec y)))))))
+
+(problem-004-old 999 999)
+
+; this solution works, it finds a few large palindromes and grabs the
+; largest of them
+(defn problem-004
+  "Largest palindrome from product of 3 digit numbers"
+  []
+  (apply max
+    (filter is-palindrome?
+      (loop [x 999
+             y 999
+             pals []]
+        (let [curr (* x y)]
+          (if (and (< x 900) (< y 900))
+            pals
+            (if (= x y)
+              (recur (dec x) 999 (conj pals curr))
+              (recur x (dec y) (conj pals curr)))))))))
+
+(problem-004)

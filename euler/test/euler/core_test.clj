@@ -28,10 +28,10 @@
   (testing "Find largest prime factor"
     (is (= 29 (problem-003 13195)))))
 
-(println (problem-003 600851475143))
+; (println (problem-003 600851475143))
 
 (deftest problem-004-test
   (testing "Largest 3-digit product palindrome"
-    (is true)))
+    (is 906609 (problem-004))))
 
 (println (problem-004))
