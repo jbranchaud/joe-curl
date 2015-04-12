@@ -37,3 +37,30 @@
   "Clone the given vector"
   [v]
   (map identity v))
+
+;
+; Insertion Sort
+;
+(defn is-inner-loop
+  "insertion sort inner loop"
+  [items j]
+  (if (and (> j 0) (> (get items (dec j)) (get items j)))
+    (recur (swap items j (dec j)) (dec j))
+    items))
+
+(defn is-outer-loop
+  "insertion sort outer loop"
+  [items]
+  (let [size (count items)]
+    (loop [curr-sort items
+           i 1]
+      (if (< i (dec size))
+        (recur (is-inner-loop curr-sort i) (inc i))
+        (is-inner-loop curr-sort i)))))
+
+(defn insertion-sort
+  "Sort a vector of comparable items using insertion sort"
+  [items]
+  (if (>= (count items) 2)
+    (is-outer-loop items)
+    items))

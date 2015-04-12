@@ -11,3 +11,10 @@
     (is (= [1 2 3 4] (swap [1 2 3 4] 0 5)))
     (is (= [1 2 3 4] (swap [1 2 3 4] 5 2)))
     (is (= [1 2 3 4] (swap [1 2 3 4] -1 7)))))
+
+(deftest insertion-sort-test
+  (testing "Sort a vector with insertion sort"
+    (is (= [1 2 3 4 5] (insertion-sort [5 4 3 2 1])))
+    (is (= [] (insertion-sort [])))
+    (is (= [1] (insertion-sort [1])))
+    (is (= [1 2] (insertion-sort [1 2])))))
