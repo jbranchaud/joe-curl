@@ -40,6 +40,7 @@
 
 ;
 ; Insertion Sort
+; http://en.wikipedia.org/wiki/Insertion_sort
 ;
 (defn is-inner-loop
   "insertion sort inner loop"
