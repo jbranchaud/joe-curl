@@ -18,3 +18,10 @@
     (is (= [] (insertion-sort [])))
     (is (= [1] (insertion-sort [1])))
     (is (= [1 2] (insertion-sort [1 2])))))
+
+(deftest selection-sort-test
+  (testing "Sort a vector with selection sort"
+    (is (= [1 2 3 4 5] (selection-sort [5 4 3 2 1])))
+    (is (= [] (selection-sort [])))
+    (is (= [1] (selection-sort [1])))
+    (is (= [1 2] (selection-sort [1 2])))))

@@ -65,3 +65,36 @@
   (if (>= (count items) 2)
     (is-outer-loop items)
     items))
+
+;
+; Selection Sort
+; http://en.wikipedia.org/wiki/Selection_sort
+;
+(defn ss-inner-loop
+  "selection sort inner loop"
+  [items j]
+  (loop [i (inc j)
+         i-min j]
+    (if (>= i (count items))
+      i-min
+      (if (< (get items i) (get items i-min))
+        (recur (inc i) i)
+        (recur (inc i) i-min)))))
+
+(defn ss-outer-loop
+  "selection sort outer loop"
+  [items]
+  (let [size (count items)]
+    (loop [curr-sort items
+           j 0]
+      (if (>= j (dec size))
+        curr-sort
+        (let [i-min (ss-inner-loop curr-sort j)]
+          (if (not (= i-min j))
+            (recur (swap curr-sort i-min j) (inc j))
+            (recur curr-sort (inc j))))))))
+
+(defn selection-sort
+  "Sort a vector of comparable items using selection sort"
+  [items]
+  (ss-outer-loop items))
