@@ -12,14 +12,17 @@
   [tag]
   (:href (:attrs tag)))
 
+(defn hn-dom
+  ""
+  []
+  (html/html-resource
+    (java.io.StringReader.
+      (slurp "https://news.ycombinator.com"))))
+
 (defn -main
   ""
   [& args]
-  (def dom
-    (html/html-resource
-      (java.io.StringReader.
-        (slurp "https://news.ycombinator.com"))))
-  (doseq [link (html/select dom [:tr.athing :td.title :a])]
+  (doseq [link (html/select (hn-dom) [:tr.athing :td.title :a])]
     (println (tag-text link))
     (println (str "- " (tag-href link))))
 )
